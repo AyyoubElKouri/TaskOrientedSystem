@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Scrollbar globale pour Webkit (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* si scrollbar horizontale */
+}
+
+*::-webkit-scrollbar-track {
+    background: #374151; /* gris foncé (tailwind gray-700) */
+    border-radius: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #fbbf24; /* jaune (tailwind yellow-400) */
+    border-radius: 8px;
+    border: 2px solid #374151; /* crée une bordure autour du thumb */
+}
+
+/* Scrollbar pour Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #fbbf24 #374151;
+}
