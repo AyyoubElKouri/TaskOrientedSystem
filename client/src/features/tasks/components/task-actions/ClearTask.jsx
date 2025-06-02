@@ -1,50 +1,21 @@
-import { useContext, useState } from "react";
-import { Trash2, Trash } from "lucide-react";
-import { TasksContext } from "../../../Main";
+import { Trash2, Trash } from 'lucide-react';
+import useClearTasks from '../../hooks/useClearTasks';
 
 const ClearTask = () => {
-    const { tasks, setTasks } = useContext(TasksContext);
-    const [showModal, setShowModal] = useState(false);
 
-    const clearAllTasks = () => {
-        setShowModal(true);
-    };
-
-    const confirmClearAll = async () => {
-        try {
-            const response = await fetch(`http://localhost:3000/task/delete_all`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                const errText = await response.text();
-                throw new Error(`Failed to delete all tasks: ${errText}`);
-            }
-
-            // مسح الواجهة من المهام
-            setTasks([]);
-            setShowModal(false);
-
-        } catch (error) {
-            console.error('Error while clearing all tasks:', error.message);
-        }
-    };
-
+    const { showModal, setShowModal, clearAllTasks, confirmClearAll } = useClearTasks();
 
     return (
         <>
-            <div className="flex flex-col sm:flex-row gap-5 mt-6 max-w-md mx-auto">
-                {/* Bouton Supprimer toutes les tâches */}
-                <button
+            <div className="">
+            <button
                     onClick={clearAllTasks}
-                    className="flex items-center justify-center gap-2 px-5 py-2 border-2 border-red-600 text-red-600 rounded-lg font-semibold transition duration-300
-                               hover:bg-red-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-opacity-50 w-full sm:w-auto"
+                    className="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-red-700/20 text-red-400 border border-red-500/30
+                            hover:bg-red-600 hover:text-white hover:shadow-lg transition-all duration-300 ease-in-out
+                            focus:outline-none focus:ring-4 focus:ring-red-500/50 focus:ring-offset-2"
                 >
                     <Trash2 className="w-5 h-5" />
-                    <span>Delete all tasks</span>
+                    Delete all tasks
                 </button>
             </div>
 
@@ -60,15 +31,12 @@ const ClearTask = () => {
                         className="bg-gray-800 rounded-xl p-6 max-w-md w-[90%] shadow-2xl border border-gray-700
                                    animate-fade-in-up"
                     >
-                        <h3
-                            id="modal-title"
-                            className="text-white text-xl font-semibold mb-4"
-                        >
+                        <h3 id="modal-title" className="text-white text-xl font-semibold mb-4">
                             Confirmation
                         </h3>
                         <p className="text-gray-300 mb-6">
-                            Are you sure you want to delete <strong>all</strong> tasks? This
-                            action is irreversible.
+                            Are you sure you want to delete <strong>all</strong> tasks? This action
+                            is irreversible.
                         </p>
                         <div className="flex justify-end gap-4">
                             <button

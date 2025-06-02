@@ -6,10 +6,10 @@ class Database {
 
     public constructor() {
         this.database = mysql.createPool({
-            host: 'sql7.freesqldatabase.com',
-            user: 'sql7782671',
-            password: 'V9YwfZ1DR7',
-            database: 'sql7782671',
+            host: 'localhost',
+            user: 'root',
+            password: 'hello world',
+            database: 'taskssystem',
             waitForConnections: true,
             connectionLimit: 10,
             queueLimit: 0,

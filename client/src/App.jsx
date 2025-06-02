@@ -1,8 +1,8 @@
-import Main from "./pages/dashboard/Main"
+import Home from "./features/tasks/pages/Home"
 
 function App() {
     return (
-        <Main />
+        <Home />
     )
 }
 
