@@ -17,4 +17,3 @@ app.use((err: Error, req: Request, res: Response, next: Function) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-

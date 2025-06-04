@@ -5,6 +5,8 @@ class Database {
     private isConnected: boolean;
 
     public constructor() {
+
+        // database connection informations.
         this.database = mysql.createPool({
             host: 'localhost',
             user: 'root',
@@ -21,11 +23,11 @@ class Database {
     public async connect(): Promise<void> {
 
         if (this.isConnected) {
-            console.log('Already connected to the database');
             return;
         }
 
         try {
+            // Create connection.
             const connection = await this.database.getConnection();
             connection.release();
 
@@ -68,3 +70,5 @@ class Database {
 }
 
 export default Database;
+
+

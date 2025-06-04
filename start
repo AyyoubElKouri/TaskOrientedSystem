@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Start the backend/express server.
+cd server && npm start &
+
+# Start the frontend/react application.
+cd client && npm run dev &
+
+sleep 7;
+echo "Servers running successfuly !";
+
+wait;

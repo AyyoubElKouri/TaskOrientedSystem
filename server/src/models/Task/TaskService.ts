@@ -31,7 +31,7 @@ class TaskService {
         if(!save) {
             response.status(500).json({ error: "Error saving task" });
         } else {
-            response.status(200).json({ message: "Task saved successfully", 
+            response.status(200).json({ message: "Task saved successfully",
                                         id: newTask.getId(),
                                         name: newTask.getName(),
                                         hours: newTask.getHours(),
@@ -174,3 +174,4 @@ class TaskService {
 }
 
 export default TaskService;
+

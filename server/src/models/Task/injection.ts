@@ -1,10 +1,10 @@
-import ConnectDB from '../../config/database/Database';
+import Database from '../../config/database/Database';
 import TaskController from './TaskController';
 import TaskRepository from './TaskRepository';
 import TaskService from './TaskService';
 import TaskValidator from './TaskValidator';
 
-const database = new ConnectDB();
+const database = new Database();
 
 const validator = new TaskValidator();
 
